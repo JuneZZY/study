@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        html,body{height: 100%;width: 100%;}
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    document.onmousedown=function(e1){
+        var e1=e1||window.event
+    document.querySelector('body').onclick=function(e){
+        var e=e||window.event
+        var heart=document.createElement('span')
+        heart.innerText='❤'
+        //颜色
+        var arr1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
+        var str1 = []
+        for (var i = 0; i < 6; i++) {
+            str1[i] = arr1[Math.floor(Math.random() * (15 - 0 + 1) + 0)]
+        }
+        heart.style.color = '#' + str1.join('')
+        //定位
+        heart.style.position='absolute'
+        heart.style.top=e1.pageY-30+'px'
+        heart.style.left=e1.pageX+'px'
+
+        document.querySelector('body').appendChild(heart)
+        
+        //定时实现动效
+        setTimeout(function(){
+            heart.style.top=e1.pageY-130+'px'
+            heart.style.opacity=0
+            heart.style.transitionDuration='1s'
+        }, 50);
+        }
+    }
+
+    document.onselectstart=function () { return false; };
+</script>
+</html>
